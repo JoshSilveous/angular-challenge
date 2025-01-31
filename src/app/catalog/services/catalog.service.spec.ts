@@ -2,7 +2,7 @@ import { fakeAsync, flush, TestBed, tick } from '@angular/core/testing'
 
 import { CatalogService } from './catalog.service'
 import { Catalog } from './catalog.model'
-import { BLASTERS, LASER_SABERS, MOCK_HTTP_DELAY } from './mock-data'
+import { MOCK_HTTP_DELAY } from '../mock-data'
 
 describe('CatalogService', () => {
 	let service: CatalogService
@@ -17,18 +17,13 @@ describe('CatalogService', () => {
 	})
 
 	it('should initially emit null data', () => {
-		let blasters: Catalog.Blaster[] | null = null
-		let laserSabers: Catalog.LaserSaber[] | null = null
+		let catalog: Catalog.FullCatalog | null = null
 
-		service.blasters$.subscribe((val) => {
-			blasters = val
-		})
-		service.laserSabers$.subscribe((val) => {
-			laserSabers = val
+		service.catalog$.subscribe((val) => {
+			catalog = val
 		})
 
-		expect(blasters).toBe(null)
-		expect(laserSabers).toBe(null)
+		expect(catalog).toBe(null)
 	})
 
 	// it('should emit data properly after HTTP call', fakeAsync(() => {
