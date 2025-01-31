@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, delay, of } from 'rxjs'
 import { Catalog } from './catalog.model'
-import { BLASTERS, LASER_SABERS } from './mock-data'
+import { BLASTERS, LASER_SABERS, MOCK_HTTP_DELAY } from './mock-data'
 
 @Injectable({
 	providedIn: 'root',
@@ -15,11 +15,15 @@ export class CatalogService {
 
 	constructor() {
 		of(BLASTERS)
-			.pipe(delay(2000)) // mock async database call
-			.subscribe((blasterData) => this.blastersSubject.next(blasterData))
+			.pipe(delay(MOCK_HTTP_DELAY)) // mock async database call
+			.subscribe((blasterData) => {
+				console.log('updating blasterData to:', blasterData)
+
+				this.blastersSubject.next(blasterData)
+			})
 
 		of(LASER_SABERS)
-			.pipe(delay(2000)) // mock async database call
+			.pipe(delay(MOCK_HTTP_DELAY)) // mock async database call
 			.subscribe((laserSaberData) => this.laserSabersSubject.next(laserSaberData))
 	}
 }

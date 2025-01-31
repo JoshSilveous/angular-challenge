@@ -73,3 +73,5 @@ export const LASER_SABERS: Catalog.LaserSaber[] = [
 		bladeCount: 2,
 	},
 ]
+
+export const MOCK_HTTP_DELAY = 2000
