@@ -1,17 +1,5 @@
-import { Component } from '@angular/core'
 import { bootstrapApplication } from '@angular/platform-browser'
-import { ItemListComponent } from './app/catalog/components/item-list/item-list.component'
+import { appConfig } from './app/app.config'
+import { App } from './app/app.component'
 
-@Component({
-	selector: 'app-root',
-	template: `
-		<h1>Hello from {{ name }}!</h1>
-		<div><item-list /></div>
-	`,
-	imports: [ItemListComponent],
-})
-export class App {
-	name = 'Rolled Alloys'
-}
-
-bootstrapApplication(App)
+bootstrapApplication(App, appConfig).catch((err) => console.error(err))

@@ -16,9 +16,9 @@ export namespace Catalog {
 	}
 
 	export type CatalogEntry<T extends 'Blasters' | 'Laser Sabers'> = T extends 'Blasters'
-		? { name: 'Blasters'; items: Blaster[] }
+		? { name: 'Blasters'; id: string; items: Blaster[] }
 		: T extends 'Laser Sabers'
-		? { name: 'Laser Sabers'; items: LaserSaber[] }
+		? { name: 'Laser Sabers'; id: string; items: LaserSaber[] }
 		: never
 
 	export type FullCatalog = (CatalogEntry<'Blasters'> | CatalogEntry<'Laser Sabers'>)[]

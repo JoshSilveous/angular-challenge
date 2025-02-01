@@ -1,1 +1,37 @@
-<p>item-details works!</p>
+<div class="container" *ngIf="itemName && itemModels; else loading">
+	<h1>Selected "{{ itemName }}"</h1>
+	<h2>Choose a Model:</h2>
+	<div class="models-container">
+		<button
+			*ngFor="let model of itemModels; let i = index"
+			class="model"
+			(click)="selectModel(i)"
+			[ngClass]="{ selected: currentSelectedModel === i }"
+		>
+			<div class="name">
+				{{ model.name }}
+			</div>
+			<div class="price">${{ model.price.toFixed(2) }}</div>
+			<div class="other-properties">
+				<div *ngFor="let property of model.otherProperties" class="property">
+					<div class="title">{{ property[0] }}:</div>
+					<div class="value">{{ property[1] }}</div>
+				</div>
+			</div>
+		</button>
+	</div>
+	<div class="quantity-container">
+		<label for="quantity">Quantity:</label>
+		<input
+			id="quantity"
+			type="number"
+			[(ngModel)]="currentQuantity"
+			(input)="onQuantityChange($event)"
+		/>
+	</div>
+	<div class="price-container">Price: {{ price }}</div>
+</div>
+
+<ng-template #loading>
+	<div class="loading">Loading catalog...</div>
+</ng-template>

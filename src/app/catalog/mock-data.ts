@@ -3,6 +3,7 @@ import { Catalog } from './services/catalog.model'
 export const MOCK_RETRIEVED_ITEMS = [
 	{
 		name: 'Blasters',
+		id: 'blasters',
 		items: [
 			{
 				name: 'GR-4 ST Blaster',
@@ -28,6 +29,7 @@ export const MOCK_RETRIEVED_ITEMS = [
 	},
 	{
 		name: 'Laser Sabers',
+		id: 'laser-sabers',
 		items: [
 			{
 				name: "Blademaster's Shoto",

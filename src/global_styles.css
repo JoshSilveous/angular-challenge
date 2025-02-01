@@ -1,1 +1,62 @@
 /* Add application styles & imports to this file! */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+	margin: 0;
+
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #242424;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+	overflow: hidden;
+}
+body {
+	/* https://coolors.co/palette/03045e-023e8a-0077b6-0096c7-00b4d8-48cae4-90e0ef-ade8f4-caf0f8 */
+	background: linear-gradient(135deg, #64748b 0%, #334155 30%, #1e293b 70%, #020617 100%);
+	background-size: 400% 400%;
+	animation: backgroundGradientIdle 10s ease-in-out 0s infinite;
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	color: black;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+	margin: 0;
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+h1 {
+	font-weight: 500;
+	font-size: 24px;
+}
+
+h2 {
+	font-weight: 300;
+	font-size: 18px;
+}
+@keyframes backgroundGradientIdle {
+	0% {
+		background-position: 100% 50%;
+	}
+	50% {
+		background-position: 60% 50%;
+	}
+	100% {
+		background-position: 100% 50%;
+	}
+}
+:root {
+	color: red;
+}
