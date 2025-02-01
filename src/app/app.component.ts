@@ -27,7 +27,8 @@ import { RouterOutlet } from '@angular/router'
 				width: 100%;
 				max-width: 1000px;
 				max-height: 100%;
-				overflow: hidden;
+				overflow-Y: auto;
+				overflow-X: hidden;
 				padding: 20px;
 				border-radius: 20px;
 				background-color: #cbd5e1;

@@ -33,4 +33,36 @@
 			}
 		}
 	}
+
+	.quantity-container {
+		input {
+			margin-left: 10px;
+		}
+	}
+	.button-container {
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+
+		@media (max-width: 396px) {
+			flex-direction: column;
+			button {
+				min-width: 100%;
+			}
+		}
+		button {
+			width: 300px;
+			max-width: 100%;
+		}
+	}
+	.price {
+		color: green;
+		font-weight: 500;
+	}
+
+	.quantity-container,
+	.price-container,
+	.button-container {
+		margin-top: 20px;
+	}
 }

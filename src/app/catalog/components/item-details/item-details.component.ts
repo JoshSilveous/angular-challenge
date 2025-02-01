@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute, Router, RouterModule } from '@angular/router'
 import { CatalogService } from '../../services/catalog.service'
 import { combineLatest, map } from 'rxjs'
 import { Catalog } from '../../services/catalog.model'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { FormatAccountingPipe } from '../../../shared/pipes/format-accounting.pipe'
-import { JoshTileComponent } from "../../../shared/components/josh-tile/josh-tile.component";
+import { JoshTileComponent } from '../../../shared/components/josh-tile/josh-tile.component'
 
 @Component({
 	selector: 'app-item-details',
-	imports: [CommonModule, FormsModule, FormatAccountingPipe, JoshTileComponent],
+	imports: [
+		CommonModule,
+		FormsModule,
+		FormatAccountingPipe,
+		JoshTileComponent,
+		RouterModule,
+	],
 	templateUrl: './item-details.component.html',
 	styleUrl: './item-details.component.scss',
 })
@@ -26,7 +32,6 @@ export class ItemDetailsComponent implements OnInit {
 
 	currentSelectedModel = -1 // ideally, each model would have a unique ID instead of using indexes
 	currentQuantity = 1
-
 	price = 0
 
 	constructor(
@@ -37,8 +42,6 @@ export class ItemDetailsComponent implements OnInit {
 
 	selectModel(index: number) {
 		this.currentSelectedModel = index
-		console.log('model is now:', this.currentSelectedModel)
-		console.log('quan is now:', this.currentQuantity)
 		this.recalculatePrice()
 	}
 
@@ -52,6 +55,10 @@ export class ItemDetailsComponent implements OnInit {
 
 		target.value = this.currentQuantity.toString()
 		this.recalculatePrice()
+	}
+
+	placeOrder() {
+		alert('order placed!')
 	}
 
 	ngOnInit(): void {
