@@ -5,10 +5,11 @@ import { combineLatest, map } from 'rxjs'
 import { Catalog } from '../../services/catalog.model'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
+import { FormatAccountingPipe } from '../../../shared/pipes/format-accounting.pipe'
 
 @Component({
 	selector: 'app-item-details',
-	imports: [CommonModule, FormsModule],
+	imports: [CommonModule, FormsModule, FormatAccountingPipe],
 	templateUrl: './item-details.component.html',
 	styleUrl: './item-details.component.scss',
 })
@@ -22,7 +23,7 @@ export class ItemDetailsComponent implements OnInit {
 		  }[]
 		| null = null
 
-	currentSelectedModel = -1
+	currentSelectedModel = -1 // ideally, each model would have a unique ID instead of using indexes
 	currentQuantity = 1
 
 	price = 0
@@ -41,8 +42,12 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 	onQuantityChange(e: Event) {
-		const inputValue = (e.target as HTMLInputElement).value
-		this.currentQuantity = inputValue ? parseInt(inputValue) : 0
+		const target = e.target as HTMLInputElement
+		const inputValue = target.value
+
+		const parsedValue = inputValue ? parseInt(inputValue) : 0
+
+		this.currentQuantity = Math.max(parsedValue, 1)
 		this.recalculatePrice()
 	}
 

@@ -11,25 +11,31 @@
 			<div class="name">
 				{{ model.name }}
 			</div>
-			<div class="price">${{ model.price.toFixed(2) }}</div>
 			<div class="other-properties">
 				<div *ngFor="let property of model.otherProperties" class="property">
 					<div class="title">{{ property[0] }}:</div>
 					<div class="value">{{ property[1] }}</div>
 				</div>
 			</div>
+			<div class="price">${{ model.price | formatAccounting }}</div>
 		</button>
 	</div>
 	<div class="quantity-container">
 		<label for="quantity">Quantity:</label>
 		<input
+			min="1"
 			id="quantity"
 			type="number"
 			[(ngModel)]="currentQuantity"
 			(input)="onQuantityChange($event)"
 		/>
 	</div>
-	<div class="price-container">Price: {{ price }}</div>
+	<div class="price-container">Price: ${{ price | formatAccounting }}</div>
+	<div class="submit-container">
+		<button [disabled]="currentSelectedModel === -1 || currentQuantity <= 0">
+			Submit
+		</button>
+	</div>
 </div>
 
 <ng-template #loading>
