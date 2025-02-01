@@ -6,10 +6,11 @@ import { Catalog } from '../../services/catalog.model'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { FormatAccountingPipe } from '../../../shared/pipes/format-accounting.pipe'
+import { JoshTileComponent } from "../../../shared/components/josh-tile/josh-tile.component";
 
 @Component({
 	selector: 'app-item-details',
-	imports: [CommonModule, FormsModule, FormatAccountingPipe],
+	imports: [CommonModule, FormsModule, FormatAccountingPipe, JoshTileComponent],
 	templateUrl: './item-details.component.html',
 	styleUrl: './item-details.component.scss',
 })

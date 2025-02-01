@@ -2,11 +2,11 @@
 	<h1>Selected "{{ itemName }}"</h1>
 	<h2>Choose a Model:</h2>
 	<div class="models-container">
-		<button
+		<josh-tile
 			*ngFor="let model of itemModels; let i = index"
-			class="model"
+			class="model-tile"
 			(click)="selectModel(i)"
-			[ngClass]="{ selected: currentSelectedModel === i }"
+			[selected]="currentSelectedModel === i"
 		>
 			<div class="name">
 				{{ model.name }}
@@ -18,7 +18,7 @@
 				</div>
 			</div>
 			<div class="price">${{ model.price | formatAccounting }}</div>
-		</button>
+		</josh-tile>
 	</div>
 	<div class="quantity-container">
 		<label for="quantity">Quantity:</label>

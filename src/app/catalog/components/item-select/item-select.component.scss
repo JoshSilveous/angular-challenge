@@ -6,24 +6,16 @@
 	}
 	.items-container {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		gap: 60px;
+		grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+		gap: 20px;
 		max-height: 600px;
 		overflow: auto;
+		padding: 10px;
+		.name {
+			font-weight: 700;
+		}
 
 		.item {
-			border-radius: 20px;
-			height: 200px;
-			width: 200px;
-			padding: 20px;
-			box-sizing: border-box;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: space-between;
-			background-color: #00000047;
-			margin: 0 auto;
-
 			button {
 				height: 30px;
 				width: 100%;
@@ -38,4 +30,13 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.items-contasiner {
+	display: grid;
+	/* Prevents unwanted stretching */
+	gap: 20px;
+	max-height: 600px;
+	overflow: auto;
+	padding: 10px;
+	justify-content: center; /* Centers items when fewer items exist */
 }

@@ -1,11 +1,15 @@
 <div class="container" *ngIf="catalog$ | async as catalog; else loading">
 	<h1>Choose a Product</h1>
 	<div class="items-container">
-		<div *ngFor="let catalogItem of catalog" class="item">
-			<h2>{{ catalogItem.name }}</h2>
-
-			<a><button [routerLink]="['/catalog', catalogItem.id]">Select</button></a>
-		</div>
+		<josh-tile
+			*ngFor="let catalogItem of catalog"
+			class="item"
+			[routerLink]="['/catalog', catalogItem.id]"
+		>
+			<h2 class="name">
+				{{ catalogItem.name }}
+			</h2>
+		</josh-tile>
 	</div>
 </div>
 
