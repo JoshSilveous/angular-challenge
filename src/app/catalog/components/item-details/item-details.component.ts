@@ -47,7 +47,9 @@ export class ItemDetailsComponent implements OnInit {
 
 		const parsedValue = inputValue ? parseInt(inputValue) : 0
 
-		this.currentQuantity = Math.max(parsedValue, 1)
+		this.currentQuantity = Math.max(Math.floor(parsedValue), 1)
+
+		target.value = this.currentQuantity.toString()
 		this.recalculatePrice()
 	}
 
