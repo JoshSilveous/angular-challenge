@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core'
+import { formatAccounting } from '../functions/formatAccounting'
 
 @Pipe({
 	name: 'formatAccounting',
@@ -6,14 +7,6 @@ import { Pipe, PipeTransform } from '@angular/core'
 })
 export class FormatAccountingPipe implements PipeTransform {
 	transform(value: number | string): string {
-		if (typeof value === 'string') {
-			value = parseFloat(value)
-		}
-
-		if (isNaN(value)) {
-			return '0.00'
-		}
-
-		return value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+		return formatAccounting(value)
 	}
 }

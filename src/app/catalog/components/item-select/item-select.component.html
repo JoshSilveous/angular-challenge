@@ -1,15 +1,23 @@
 <div class="container" *ngIf="catalog$ | async as catalog; else loading">
 	<h1>Choose a Product</h1>
-	<div class="items-container">
-		<josh-tile
-			*ngFor="let catalogItem of catalog"
-			class="item"
-			[routerLink]="['/catalog', catalogItem.id]"
-		>
-			<h2 class="name">
-				{{ catalogItem.name }}
-			</h2>
-		</josh-tile>
+	<div class="overflow-auto">
+		<div class="items-container">
+			<mat-card *ngFor="let catalogItem of catalog" class="item mat-primary">
+				<mat-card-header>
+					<h5>{{ catalogItem.name }}</h5>
+				</mat-card-header>
+				<mat-card-content class="h-100 d-flex flex-column justify-content-end">
+					<button
+						mat-raised-button
+						[class.selected]="true"
+						class="w-100"
+						[routerLink]="['/catalog', catalogItem.id]"
+					>
+						Select
+					</button>
+				</mat-card-content>
+			</mat-card>
+		</div>
 	</div>
 </div>
 

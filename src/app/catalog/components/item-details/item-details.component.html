@@ -21,7 +21,7 @@
 							<div class="capitalize">{{ property[1] }}</div>
 						</div>
 					</div>
-					<div class="price">${{ model.price | formatAccounting }}</div>
+					<div class="p-lgprice">${{ model.price | formatAccounting }}</div>
 					<button
 						(click)="selectModel(i)"
 						mat-raised-button
@@ -34,20 +34,22 @@
 			</mat-card>
 		</div>
 	</div>
-	<div class="quantity-container mgn-top">
-		<mat-form-field>
-			<mat-label>Quantity</mat-label>
-			<input
-				matInput
-				id="quantity"
-				type="number"
-				[(ngModel)]="currentQuantity"
-				(input)="onQuantityChange($event)"
-			/>
-		</mat-form-field>
-	</div>
-	<div class="price-container">
-		Total Price: <span class="price">${{ price | formatAccounting }}</span>
+	<div class="two-col d-flex justify-content-start mgn-top flex-wrap">
+		<div class="quantity-container">
+			<mat-form-field>
+				<mat-label>Quantity</mat-label>
+				<input
+					matInput
+					id="quantity"
+					type="number"
+					[(ngModel)]="currentQuantity"
+					(input)="onQuantityChange($event)"
+				/>
+			</mat-form-field>
+		</div>
+		<div class="price-container">
+			Total Price:<span class="price">${{ price | formatAccounting }}</span>
+		</div>
 	</div>
 
 	<div class="button-container mgn-top d-flex justify-content-between">
@@ -56,6 +58,7 @@
 			mat-flat-button
 			[disabled]="currentSelectedModel === -1 || currentQuantity <= 0"
 			(click)="placeOrder()"
+			[routerLink]="['/catalog']"
 		>
 			Order Now
 		</button>

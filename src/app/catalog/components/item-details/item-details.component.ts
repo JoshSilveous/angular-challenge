@@ -9,6 +9,7 @@ import { FormatAccountingPipe } from '../../../shared/pipes/format-accounting.pi
 import { MatCardModule } from '@angular/material/card'
 import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
+import { formatAccounting } from '../../../shared/functions/formatAccounting'
 
 @Component({
 	selector: 'app-item-details',
@@ -62,7 +63,14 @@ export class ItemDetailsComponent implements OnInit {
 	}
 
 	placeOrder() {
-		alert('order placed!')
+		alert(
+			'Your order has been placed!' +
+				`\nItem: ${this.itemName}` +
+				`\nModel: ${this.itemModels![this.currentSelectedModel].name}` +
+				`\nQuantity: ${this.currentQuantity}` +
+				`\n\nTotal: $${formatAccounting(this.price)}`
+		)
+		console.log('lert lccosed')
 	}
 
 	ngOnInit(): void {

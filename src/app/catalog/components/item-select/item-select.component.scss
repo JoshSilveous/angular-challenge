@@ -1,0 +1,11 @@
+.items-container {
+	flex-grow: 1;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+	gap: 20px;
+	padding: 10px 0;
+	.item {
+		height: 250px;
+		width: 200px;
+	}
+}
