@@ -1,8 +1,14 @@
-### Hi!
+# Hi!
 
 Thank you for taking the time to review my application and this project. For this challenge, I chose to use Bootstrap and Angular Material components to align with RA's tech stack (I typically create my own styles).
 
 This is also my first time working with Angular, though many of the concepts I've learned from React's component-based architecture carry over. I’ve done my best to research and follow best practices, but I’m always open to feedback and suggestions for improvement. Thank you for your time and consideration!
+
+Notes:
+
+-   The catalog service uses random delays to mock API calls
+-   Unit tests for services, pipes, and components are provided
+-   "Blasters" and "Laser Sabers" aren't hard-coded into the UI at all. More items can be added to the catalog and all components/functions will work (though I _did_ slightly cheat by added an 'id' attribute to each catalog item).
 
 # Challenge Description
 
