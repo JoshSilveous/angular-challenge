@@ -70,7 +70,6 @@ export class ItemDetailsComponent implements OnInit {
 				`\nQuantity: ${this.currentQuantity}` +
 				`\n\nTotal: $${formatAccounting(this.price)}`
 		)
-		console.log('lert lccosed')
 	}
 
 	ngOnInit(): void {

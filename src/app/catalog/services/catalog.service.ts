@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject, delay, of } from 'rxjs'
+import { BehaviorSubject, delay, forkJoin, of } from 'rxjs'
 import { Catalog } from './catalog.model'
-import { MOCK_RETRIEVED_ITEMS, MOCK_HTTP_DELAY } from '../mock-data'
+import {
+	MOCK_RETRIEVED_BLASTERS,
+	MOCK_RETRIEVED_LASER_SABERS,
+	genMockHttpDelay,
+} from '../mock-data'
 
 @Injectable({
 	providedIn: 'root',
@@ -11,10 +15,12 @@ export class CatalogService {
 	catalog$ = this.catalogSubject.asObservable()
 
 	constructor() {
-		of(MOCK_RETRIEVED_ITEMS)
-			.pipe(delay(MOCK_HTTP_DELAY)) // mock async database call
-			.subscribe((retrievedCatalog) => {
-				this.catalogSubject.next(retrievedCatalog)
-			})
+		forkJoin([
+			// mock fetching the data from two APIs
+			of(MOCK_RETRIEVED_BLASTERS).pipe(delay(genMockHttpDelay())),
+			of(MOCK_RETRIEVED_LASER_SABERS).pipe(delay(genMockHttpDelay())),
+		]).subscribe(([blasters, laserSabers]) => {
+			this.catalogSubject.next([blasters, laserSabers])
+		})
 	}
 }

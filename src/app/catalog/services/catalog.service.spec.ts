@@ -1,8 +1,6 @@
-import { fakeAsync, flush, TestBed, tick } from '@angular/core/testing'
-
+import { TestBed } from '@angular/core/testing'
 import { CatalogService } from './catalog.service'
-import { Catalog } from './catalog.model'
-import { MOCK_HTTP_DELAY } from '../mock-data'
+import { MOCK_RETRIEVED_BLASTERS, MOCK_RETRIEVED_LASER_SABERS } from '../mock-data'
 
 describe('CatalogService', () => {
 	let service: CatalogService
@@ -17,34 +15,23 @@ describe('CatalogService', () => {
 	})
 
 	it('should initially emit null data', () => {
-		let catalog: Catalog.FullCatalog | null = null
-
-		service.catalog$.subscribe((val) => {
-			catalog = val
+		service.catalog$.subscribe((catalog) => {
+			expect(catalog).toBe(null)
 		})
-
-		expect(catalog).toBe(null)
 	})
-
-	// it('should emit data properly after HTTP call', fakeAsync(() => {
-	// 	let blasters: Catalog.Blaster[] | null = null
-	// 	let laserSabers: Catalog.LaserSaber[] | null = null
-
-	// 	service.blasters$.subscribe((val) => {
-	// 		blasters = val
-	// 	})
-	// 	service.laserSabers$.subscribe((val) => {
-	// 		laserSabers = val
-	// 	})
-
-	// 	expect(blasters).toBeNull()
-	// 	expect(laserSabers).toBeNull()
-
-	// 	// since we're not actually using a http request, just wait for delay
-	// 	tick(MOCK_HTTP_DELAY)
-	// 	flush()
-
-	// 	expect(blasters as unknown).toEqual(BLASTERS)
-	// 	expect(laserSabers as unknown).toEqual(LASER_SABERS)
-	// }))
+	it('should emit data properly after HTTP call completes', (done) => {
+		const failTimeout = setTimeout(() => {
+			done.fail('Test timed out: Catalog data was not received in time')
+		}, 3000)
+		service.catalog$.subscribe((catalog) => {
+			if (catalog) {
+				clearTimeout(failTimeout)
+				expect(catalog).toEqual([
+					MOCK_RETRIEVED_BLASTERS,
+					MOCK_RETRIEVED_LASER_SABERS,
+				])
+				done()
+			}
+		})
+	})
 })

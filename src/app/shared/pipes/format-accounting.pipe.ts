@@ -3,7 +3,7 @@ import { formatAccounting } from '../functions/formatAccounting'
 
 @Pipe({
 	name: 'formatAccounting',
-	standalone: true, // This allows it to be imported directly
+	standalone: true,
 })
 export class FormatAccountingPipe implements PipeTransform {
 	transform(value: number | string): string {
