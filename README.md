@@ -1,4 +1,10 @@
-# RA PROGRAMMING CHALLENGE
+### Hi!
+
+Thank you for taking the time to review my application and this project. For this challenge, I chose to use Bootstrap and Angular Material components to align with RA's tech stack (I typically create my own styles).
+
+This is also my first time working with Angular, though many of the concepts I've learned from React's component-based architecture carry over. I’ve done my best to research and follow best practices, but I’m always open to feedback and suggestions for improvement. Thank you for your time and consideration!
+
+# Challenge Description
 
 Thank you very much for your interest in our open web developer position. In
 order to evaluate your programming skills, we would like you to write a small
