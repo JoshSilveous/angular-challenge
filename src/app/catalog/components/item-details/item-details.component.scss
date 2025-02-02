@@ -1,68 +1,75 @@
 .container {
-	.models-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
-		gap: 20px;
-		max-height: 420px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 20px 0;
+
+	.models-wrapper {
 		overflow: auto;
-		padding: 10px;
-		align-items: center;
-		justify-content: center;
-		.model-tile {
-			.name {
-				font-weight: 700;
-				flex-grow: 1;
-			}
-			.price {
-				font-weight: 500;
-				color: green;
-				width: 100%;
-			}
-			.other-properties {
-				margin-right: auto;
-				.property {
-					display: flex;
-					width: 100%;
-					justify-content: space-between;
-					gap: 10px;
-					.title,
-					.value {
-						text-transform: capitalize;
-					}
+		.models-container {
+			flex-grow: 1;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+			gap: 20px;
+			padding: 10px;
+			.model {
+				height: 250px;
+				width: 200px;
+				transition: background-color 0.2s ease;
+				.other-properties {
+					margin-top: auto;
+				}
+				&.selected {
+					background-color: #e6ecf8;
+				}
+				.price {
+					color: green;
+					font-weight: 500;
+				}
+				button {
+					margin-top: 5px;
 				}
 			}
 		}
 	}
-
-	.quantity-container {
-		input {
-			margin-left: 10px;
-		}
+	.capitalize {
+		text-transform: capitalize;
 	}
-	.button-container {
-		display: flex;
-		justify-content: space-between;
-		gap: 20px;
-
-		@media (max-width: 396px) {
-			flex-direction: column;
-			button {
-				min-width: 100%;
-			}
-		}
-		button {
-			width: 300px;
-			max-width: 100%;
-		}
-	}
-	.price {
-		color: green;
-		font-weight: 500;
-	}
-
-	.quantity-container,
-	.price-container,
-	.button-container {
+	.mgn-top {
 		margin-top: 20px;
 	}
+
+	// 	.quantity-container {
+	// 		input {
+	// 			margin-left: 10px;
+	// 		}
+	// 	}
+	// 	.button-container {
+	// 		display: flex;
+	// 		justify-content: space-between;
+	// 		gap: 20px;
+
+	// 		@media (max-width: 396px) {
+	// 			flex-direction: column;
+	// 			button {
+	// 				min-width: 100%;
+	// 			}
+	// 		}
+	// 		button {
+	// 			width: 300px;
+	// 			max-width: 100%;
+	// 		}
+	// 	}
+	// 	.price {
+	// 		color: green;
+	// 		font-weight: 500;
+	// 	}
+
+	// 	.quantity-container,
+	// 	.price-container,
+	// 	.button-container {
+	// 		margin-top: 20px;
+	// 	}
+	// }
 }

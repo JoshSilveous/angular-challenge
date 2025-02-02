@@ -6,7 +6,9 @@ import { Catalog } from '../../services/catalog.model'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { FormatAccountingPipe } from '../../../shared/pipes/format-accounting.pipe'
-import { JoshTileComponent } from '../../../shared/components/josh-tile/josh-tile.component'
+import { MatCardModule } from '@angular/material/card'
+import { MatButtonModule } from '@angular/material/button'
+import { MatInputModule } from '@angular/material/input'
 
 @Component({
 	selector: 'app-item-details',
@@ -14,8 +16,10 @@ import { JoshTileComponent } from '../../../shared/components/josh-tile/josh-til
 		CommonModule,
 		FormsModule,
 		FormatAccountingPipe,
-		JoshTileComponent,
 		RouterModule,
+		MatCardModule,
+		MatButtonModule,
+		MatInputModule,
 	],
 	templateUrl: './item-details.component.html',
 	styleUrl: './item-details.component.scss',

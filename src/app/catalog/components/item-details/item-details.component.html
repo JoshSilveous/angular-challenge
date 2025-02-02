@@ -1,42 +1,59 @@
 <div class="container" *ngIf="itemName && itemModels; else loading">
 	<h1>Selected "{{ itemName }}"</h1>
-	<h2>Choose a Model:</h2>
-	<div class="models-container">
-		<josh-tile
-			*ngFor="let model of itemModels; let i = index"
-			class="model-tile"
-			(click)="selectModel(i)"
-			[selected]="currentSelectedModel === i"
-		>
-			<div class="name">
-				{{ model.name }}
-			</div>
-			<div class="other-properties">
-				<div *ngFor="let property of model.otherProperties" class="property">
-					<div class="title">{{ property[0] }}:</div>
-					<div class="value">{{ property[1] }}</div>
-				</div>
-			</div>
-			<div class="price">${{ model.price | formatAccounting }}</div>
-		</josh-tile>
+	<h2 class="mgn-top">Choose a Model:</h2>
+	<div class="models-wrapper">
+		<div class="models-container">
+			<mat-card
+				*ngFor="let model of itemModels; let i = index"
+				class="model mat-primary"
+				[class.selected]="currentSelectedModel === i"
+			>
+				<mat-card-header>
+					<h5>{{ model.name }}</h5>
+				</mat-card-header>
+				<mat-card-content class="other-properties">
+					<div class="other-properties-container">
+						<div
+							*ngFor="let property of model.otherProperties"
+							class="d-flex justify-content-between"
+						>
+							<div class="fw-bold capitalize">{{ property[0] }}:</div>
+							<div class="capitalize">{{ property[1] }}</div>
+						</div>
+					</div>
+					<div class="price">${{ model.price | formatAccounting }}</div>
+					<button
+						(click)="selectModel(i)"
+						mat-raised-button
+						[class.selected]="true"
+						class="w-100"
+					>
+						Select
+					</button>
+				</mat-card-content>
+			</mat-card>
+		</div>
 	</div>
-	<div class="quantity-container">
-		<label for="quantity">Quantity:</label>
-		<input
-			id="quantity"
-			type="number"
-			[(ngModel)]="currentQuantity"
-			(input)="onQuantityChange($event)"
-		/>
+	<div class="quantity-container mgn-top">
+		<mat-form-field>
+			<mat-label>Quantity</mat-label>
+			<input
+				matInput
+				id="quantity"
+				type="number"
+				[(ngModel)]="currentQuantity"
+				(input)="onQuantityChange($event)"
+			/>
+		</mat-form-field>
 	</div>
 	<div class="price-container">
 		Total Price: <span class="price">${{ price | formatAccounting }}</span>
 	</div>
 
-	<div class="button-container">
-		<button [routerLink]="['/catalog']">Back to Catalog</button>
+	<div class="button-container mgn-top d-flex justify-content-between">
+		<button mat-stroked-button [routerLink]="['/catalog']">Back to Catalog</button>
 		<button
-			class="j-primary"
+			mat-flat-button
 			[disabled]="currentSelectedModel === -1 || currentQuantity <= 0"
 			(click)="placeOrder()"
 		>
